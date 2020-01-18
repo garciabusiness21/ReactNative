@@ -13,6 +13,7 @@ const mapStateToProps = state => {
         campsites: state.campsites,
         comments: state.comments,
         favorites: state.favorites
+
     }
 }
 
@@ -55,10 +56,15 @@ function RenderCampsite(props) {
                     ],
                     { cancelable: false }
                 );
+            } else (recognizeComment(gestureState)); {
+                console.log("Modal is shown");
+                props.onShowModal();
             }
             return true;
         }
     });
+
+    const recognizeComment = ({dx}) => (dx < 200) ? true : false;
 
     if (campsite) {
         return (
